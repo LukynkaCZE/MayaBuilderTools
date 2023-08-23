@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "maya-builder-tools",
+  "version": "${version}",
+  "name": "Maya's Builder Tools",
+  "description": "",
+  "authors": [
+    "lUKYNKAcze"
+  ],
+  "contact": {
+    "repo": "https://github.com/LukynkaCZE/Maya Builder Tools"
+  },
+  "license": "MIT",
+  "icon": "assets/maya-builder-tools/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "cz.lukynka.mayabuildertools.MayaBuilderTools"
+    ]
+  },
+  "mixins": [
+    "maya-builder-tools.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "fabric": "*",
+    "fabric-api": "*",
+    "minecraft": "~1.19.4"
+  }
+}
