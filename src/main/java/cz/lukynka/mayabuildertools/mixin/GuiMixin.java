@@ -2,7 +2,6 @@ package cz.lukynka.mayabuildertools.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import cz.lukynka.mayabuildertools.UI.GlazedTerracottaPicker;
-import net.minecraft.client.KeyboardHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.screens.Screen;
