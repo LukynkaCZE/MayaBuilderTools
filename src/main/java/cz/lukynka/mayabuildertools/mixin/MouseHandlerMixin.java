@@ -1,6 +1,6 @@
 package cz.lukynka.mayabuildertools.mixin;
 
-import cz.lukynka.mayabuildertools.UI.GlazedTerracottaPicker;
+import cz.lukynka.mayabuildertools.UI.CustomOrientationPickerScreen;
 import cz.lukynka.mayabuildertools.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -23,23 +23,23 @@ public class MouseHandlerMixin {
 
         var scrollingUp = Utils.isNegative(e);
 
-        if(Utils.heldItemContains(allowedBlocks) && Screen.hasAltDown()) {
+        if(Utils.heldItemContains(allowedCustomOrientationBlocks) && Screen.hasAltDown()) {
             ci.cancel();
             if(scrollingUp) {
-                if(glazedTerracottaDirectionsIndex == 4) {
-                    glazedTerracottaDirectionsIndex = 0;
+                if(customOrientationDirectionIndex == 4) {
+                    customOrientationDirectionIndex = 0;
                 } else {
-                    glazedTerracottaDirectionsIndex++;
+                    customOrientationDirectionIndex++;
                 }
             } else {
-                if(glazedTerracottaDirectionsIndex == 0) {
-                    glazedTerracottaDirectionsIndex = 4;
+                if(customOrientationDirectionIndex == 0) {
+                    customOrientationDirectionIndex = 4;
                 } else {
-                    glazedTerracottaDirectionsIndex--;
+                    customOrientationDirectionIndex--;
                 }
             }
-            glazedTerracottaDirection = glazedTerracottaDirections.get(glazedTerracottaDirectionsIndex);
-            Minecraft.getInstance().setScreen(new GlazedTerracottaPicker());
+            customOrientationDirection = customOrientationDirectionList.get(customOrientationDirectionIndex);
+            Minecraft.getInstance().setScreen(new CustomOrientationPickerScreen());
         }
     }
 }

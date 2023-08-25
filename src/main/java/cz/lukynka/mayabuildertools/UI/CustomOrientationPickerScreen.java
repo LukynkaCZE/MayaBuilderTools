@@ -14,16 +14,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Rotation;
 import org.jetbrains.annotations.NotNull;
 
-import static cz.lukynka.mayabuildertools.MayaBuilderTools.glazedTerracottaDirection;
-import static cz.lukynka.mayabuildertools.MayaBuilderTools.glazedTerracottaDirections;
+import static cz.lukynka.mayabuildertools.MayaBuilderTools.customOrientationDirection;
+import static cz.lukynka.mayabuildertools.MayaBuilderTools.customOrientationDirectionList;
 
-public class GlazedTerracottaPicker extends BaseOwoScreen<FlowLayout> {
+public class CustomOrientationPickerScreen extends BaseOwoScreen<FlowLayout> {
 
     @Override
     protected @NotNull OwoUIAdapter<FlowLayout> createAdapter() {
         return OwoUIAdapter.create(this, Containers::verticalFlow);
     }
-
     @Override
     protected void build(FlowLayout rootComponent) {
         rootComponent
@@ -37,25 +36,24 @@ public class GlazedTerracottaPicker extends BaseOwoScreen<FlowLayout> {
 
         var directionListContainer = Containers.verticalFlow(Sizing.fixed(100), Sizing.fixed(100));
 
-        for (String direction : glazedTerracottaDirections) {
+        for (String direction : customOrientationDirectionList) {
             directionListContainer.child(getDirectionContainer(direction));
         }
-
         background.child(directionListContainer);
         rootComponent.child(background);
     }
 
     private FlowLayout getDirectionContainer(String type) {
-        var layout = Containers.horizontalFlow(Sizing.fixed(100), Sizing.fixed(20));
-
         assert Minecraft.getInstance().player != null;
 
+        var layout = Containers.horizontalFlow(Sizing.fixed(100), Sizing.fixed(20));
         var rotation = switch (type) {
             case "EAST" -> Rotation.COUNTERCLOCKWISE_90;
             case "WEST" -> Rotation.CLOCKWISE_90;
             case "SOUTH" -> Rotation.NONE;
             default -> Rotation.CLOCKWISE_180;
         };
+
         var blockState = Block.byItem(Minecraft.getInstance().player.getMainHandItem().getItem()).defaultBlockState().rotate(rotation);
         if(type.equals("DEFAULT")) {
             blockState = Block.byItem(Items.AIR).defaultBlockState();
@@ -72,7 +70,7 @@ public class GlazedTerracottaPicker extends BaseOwoScreen<FlowLayout> {
         textContainer.horizontalAlignment(HorizontalAlignment.RIGHT);
 
         var textComp = Component.literal("Facing " +Utils.toStrictProperCase(type));
-        if(type.equals(glazedTerracottaDirection)) {
+        if(type.equals(customOrientationDirection)) {
             textComp = Component.literal("Facing " +Utils.toStrictProperCase(type)).withStyle(ChatFormatting.YELLOW).withStyle(ChatFormatting.UNDERLINE);
         }
 
@@ -80,9 +78,7 @@ public class GlazedTerracottaPicker extends BaseOwoScreen<FlowLayout> {
                 .verticalTextAlignment(VerticalAlignment.CENTER)
                 .horizontalTextAlignment(HorizontalAlignment.RIGHT)
         );
-
         layout.child(textContainer);
-
         return layout;
     }
 }
