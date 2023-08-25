@@ -15,6 +15,8 @@ public class MayaBuilderTools implements ModInitializer {
     public static int glazedTerracottaDirectionsIndex = 4;
     public static List<String> glazedTerracottaDirections = new ArrayList<>();
 
+    public static String[] allowedBlocks = {"glazed", "carved", "jack", "cutter", "bee", "furnace", "dispenser", "dropper", "chest", "anvil", "smoker", "grind", "observer", "rail"};
+
     @Override
     public void onInitialize() {
         LOGGER.info("Loaded Maya Builder Tools");

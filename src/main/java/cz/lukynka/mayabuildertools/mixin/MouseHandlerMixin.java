@@ -23,8 +23,7 @@ public class MouseHandlerMixin {
 
         var scrollingUp = Utils.isNegative(e);
 
-        var heldItem = Minecraft.getInstance().player.getMainHandItem().getItem().toString();
-        if(heldItem.contains("glazed") && Screen.hasControlDown()) {
+        if(Utils.heldItemContains(allowedBlocks) && Screen.hasAltDown()) {
             ci.cancel();
             if(scrollingUp) {
                 if(glazedTerracottaDirectionsIndex == 4) {
@@ -41,7 +40,6 @@ public class MouseHandlerMixin {
             }
             glazedTerracottaDirection = glazedTerracottaDirections.get(glazedTerracottaDirectionsIndex);
             Minecraft.getInstance().setScreen(new GlazedTerracottaPicker());
-            //Utils.debug("scrollingUp: " +scrollingUp + " | index: " +glazedTerracottaDirectionsIndex +" | direction: " +glazedTerracottaDirection);
         }
     }
 }

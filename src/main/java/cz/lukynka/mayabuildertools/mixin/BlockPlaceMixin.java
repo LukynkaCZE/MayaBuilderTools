@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Objects;
+
+import static cz.lukynka.mayabuildertools.MayaBuilderTools.allowedBlocks;
 import static cz.lukynka.mayabuildertools.MayaBuilderTools.glazedTerracottaDirection;
 
 @Mixin(net.minecraft.world.item.BlockItem.class)
@@ -18,9 +20,8 @@ public class BlockPlaceMixin {
     public void place(BlockPlaceContext blockPlaceContext, CallbackInfoReturnable<InteractionResult> cir) {
         assert Minecraft.getInstance().player != null;
         var player = Minecraft.getInstance().player;
-        String[] items = {"glazed"};
         // Don't do anything if held item is not any of the allowed items
-        if(!(Utils.heldItemContains(items))) return;
+        if(!(Utils.heldItemContains(allowedBlocks))) return;
         //If it's default, let it be normal minecraft behaviour
         if(!glazedTerracottaDirection.equals("DEFAULT")) {
             // We send a packet to the server to make it think that player is looking in selected direction,
