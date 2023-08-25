@@ -8,18 +8,11 @@ import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.NotNull;
-
-
-import java.util.Objects;
 
 import static cz.lukynka.mayabuildertools.MayaBuilderTools.glazedTerracottaDirection;
 import static cz.lukynka.mayabuildertools.MayaBuilderTools.glazedTerracottaDirections;
@@ -93,4 +86,3 @@ public class GlazedTerracottaPicker extends BaseOwoScreen<FlowLayout> {
         return layout;
     }
 }
-

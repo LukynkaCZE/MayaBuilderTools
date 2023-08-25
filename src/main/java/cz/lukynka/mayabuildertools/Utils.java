@@ -39,4 +39,17 @@ public class Utils {
         return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
     }
 
+    public static boolean heldItemContains(String[] names) {
+        var returnValue = false;
+        assert Minecraft.getInstance().player != null;
+        var heldItemString = Minecraft.getInstance().player.getMainHandItem().toString();
+        for (String name : names) {
+            if (heldItemString.contains(name)) {
+                returnValue = true;
+                break;
+            }
+        }
+        return returnValue;
+    }
+
 }
