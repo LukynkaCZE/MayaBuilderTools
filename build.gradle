@@ -17,8 +17,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "io.wispforest:owo-lib:0.10.6+1.19.4"
-    include "io.wispforest:owo-sentinel:0.10.6+1.19.4"
+    modImplementation "io.wispforest:owo-lib:0.11.1+1.20"
+    include "io.wispforest:owo-sentinel:0.11.1+1.20"
 
 }
 

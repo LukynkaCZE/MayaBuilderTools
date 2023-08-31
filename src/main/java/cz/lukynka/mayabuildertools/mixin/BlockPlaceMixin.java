@@ -26,7 +26,7 @@ public class BlockPlaceMixin {
         if(!customOrientationDirection.equals("DEFAULT")) {
             // We send a packet to the server to make it think that player is looking in selected direction,
             // this will get reverted back to default (on the server) when player moves
-            var packet = new ServerboundMovePlayerPacket.Rot(getRotationFromDirection(), 1F, player.isOnGround());
+            var packet = new ServerboundMovePlayerPacket.Rot(getRotationFromDirection(), 1F, player.onGround());
             Objects.requireNonNull(Minecraft.getInstance().getConnection()).send(packet);
         }
     }
