@@ -18,7 +18,9 @@ public class MouseHandlerMixin {
     private void onScroll(long l, double d, double e, CallbackInfo ci) {
 
         var player = Minecraft.getInstance().player;
+        var screen = Minecraft.getInstance().screen;
 
+        if(!(screen instanceof CustomOrientationPickerScreen)) return;
         if(player == null) return;
 
         var scrollingUp = Utils.isNegative(e);

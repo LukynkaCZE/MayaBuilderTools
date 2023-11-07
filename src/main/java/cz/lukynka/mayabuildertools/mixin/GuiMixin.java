@@ -18,8 +18,9 @@ public class GuiMixin {
     @Inject(at = @At("HEAD"), method = "render")
     public void render(GuiGraphics guiGraphics, float f, CallbackInfo ci) {
         assert Minecraft.getInstance().player != null;
+        var screen = Minecraft.getInstance().screen;
         if(Screen.hasAltDown() && Utils.heldItemContains(allowedCustomOrientationBlocks)) {
-            if(!(Minecraft.getInstance().screen instanceof CustomOrientationPickerScreen)) {
+            if(screen == null) {
                 Minecraft.getInstance().setScreen(new CustomOrientationPickerScreen());
             }
         } else {
